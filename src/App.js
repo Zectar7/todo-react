@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import { MainTab } from "./components/MainTab";
+import { Tab } from "./components/Tab";
 
 function App() {
+  const [todoList, setTodoList] = useState([]);
+  const [abledTab, setAbledTab] = useState("all");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="w-300">
+      <nav className="text-3xl font-bold text-teal-500 drop-shadow-md my-2">Todo App</nav>
+      <Tab abledTab={abledTab} setAbledTab={setAbledTab} />
+      <MainTab
+        todoList={todoList}
+        setTodoList={setTodoList}
+        abledTab={abledTab}
+      />
     </div>
   );
 }
